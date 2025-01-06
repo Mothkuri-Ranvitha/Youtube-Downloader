@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(event.target);
 
         try {
-            const response = await fetch('https://youtube-downloader-4ro4.onrender.com/fetch_details', {
+            const response = await fetch('https://youtube-downloader-ocz4.onrender.com/fetch_details', {
                 method: 'POST',
                 body: formData
             });
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(fetchForm);
 
         try {
-            const response = await fetch('https://youtube-downloader-4ro4.onrender.com/download', {
+            const response = await fetch('https://youtube-downloader-ocz4.onrender.com/download', {
                 method: 'POST',
                 body: formData
             });
