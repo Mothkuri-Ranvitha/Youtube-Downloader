@@ -7,21 +7,19 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-cur_dir = os.getcwd()
-cookies_path = 'cookies.txt'  
+cur_dir = os.path.abspath(os.path.dirname(__file__))
+cookies_path = os.path.join(cur_dir, 'cookies.txt')  # Ensure the cookies.txt file exists
 
 @app.post("/fetch_details")
 def fetch_video_details(link: str = Form(...)):
     try:
-        ydl_opts = {
-            'cookiefile': cookies_path
-        }
+        ydl_opts = {'cookiefile': cookies_path, 'quiet': True}
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             video_title = info_dict.get("title", "Unknown Title")
@@ -43,7 +41,8 @@ def download_video(link: str = Form(...)):
     youtube_dl_options = {
         "format": "best",
         "outtmpl": os.path.join(cur_dir, "%(title)s.mp4"),
-        'cookiefile': cookies_path
+        'cookiefile': cookies_path,
+        'quiet': True,
     }
 
     try:
