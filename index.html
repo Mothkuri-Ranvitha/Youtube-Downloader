@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Downloader</title>
-  
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="image.png" type="png">
 </head>
@@ -22,32 +21,26 @@
             <div class="download-section">
                 <img src="image.png" alt="No image" width="200px" height="200px"> 
                 <input type="text" name="link" placeholder="Video URL" required>
-                
                 <button type="submit">Submit</button>
-            
             </div>
-            
         </form>
         <div id="status" class="status-message"></div>
-            <div class="video-details" style="display: none;">
-                <img id="video-thumbnail" src="" alt="Video Thumbnail">
-                <div class="details">
-                    <h2 id="video-title"></h2>
-                    <p id="video-likes"></p>
-                    <button id="download-button" style="display: none;">Download</button>
-                </div>
+        <div class="video-details" style="display: none;">
+            <img id="video-thumbnail" src="" alt="Video Thumbnail">
+            <div class="details">
+                <h2 id="video-title"></h2>
+                <p id="video-likes"></p>
+                <button id="download-button" style="display: none;">Download</button>
             </div>
-          
+        </div>
         <div id="instructions">
             <h2>How to Download?</h2>
             <p>1. Enter the YouTube video URL in the field above.</p>
             <p>2. Click the "Submit" button.</p>
             <p>3. Review the video details and click the "Download" button to download the video.</p>
         </div>
-        
     </div>
     <footer>© 2025 Ranvitha Mothkuri</footer>
     <script src="script.js"></script>
-    
 </body>
 </html>
