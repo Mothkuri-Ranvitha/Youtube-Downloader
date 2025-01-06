@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(fetchForm);
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/fetch_details", {
+            const response = await fetch("https://youtube-downloader-ocz4.onrender.com/fetch_details", {
                 method: "POST",
                 body: formData,
             });
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(fetchForm);
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/download", {
+            const response = await fetch("https://youtube-downloader-ocz4.onrender.com/download", {
                 method: "POST",
                 body: formData,
             });
