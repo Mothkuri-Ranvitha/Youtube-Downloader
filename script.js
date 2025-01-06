@@ -22,19 +22,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: formData
             });
 
-            const result = await response.json();
-            if (result.status.includes("Error")) {
-                statusDiv.textContent = result.status;
+            // Log the raw response to see its contents
+            const rawResponse = await response.text();  // Get the raw response as text
+            console.log(rawResponse);  // Log it to the console
+
+            const result = JSON.parse(rawResponse);  // Try to parse it to JSON
+            if (result && result.status) {
+                if (result.status.includes("Error")) {
+                    statusDiv.textContent = result.status;
+                } else {
+                    statusDiv.textContent = "Video details fetched!";
+                    videoTitle.textContent = result.title;
+                    videoThumbnail.src = result.thumbnail;
+                    videoThumbnail.style.display = 'block';
+                    videoLikes.textContent = `Likes: ${result.likes}`;
+                    videoDetails.style.display = 'block';
+                    downloadButton.style.display = 'block';
+                }
             } else {
-                statusDiv.textContent = "Video details fetched!";
-                videoTitle.textContent = result.title;
-                videoThumbnail.src = result.thumbnail;
-                videoThumbnail.style.display = 'block';
-                videoLikes.textContent = `Likes: ${result.likes}`;
-                videoDetails.style.display = 'block';
-                downloadButton.style.display = 'block';
+                statusDiv.textContent = "Unexpected error occurred!";
             }
         } catch (error) {
+            console.error(error);  // Log any errors to the console
             statusDiv.textContent = `Error: ${error.message}`;
         }
     });
@@ -51,13 +60,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: formData
             });
 
-            const result = await response.json();
-            if (result.status.includes("Error")) {
-                statusDiv.textContent = result.status;
+            const rawResponse = await response.text();  // Get the raw response as text
+            console.log(rawResponse);  // Log it to the console
+
+            const result = JSON.parse(rawResponse);  // Try to parse it to JSON
+            if (result && result.status) {
+                if (result.status.includes("Error")) {
+                    statusDiv.textContent = result.status;
+                } else {
+                    statusDiv.textContent = "Download started!";
+                }
             } else {
-                statusDiv.textContent = "Download started!";
+                statusDiv.textContent = "Unexpected error occurred!";
             }
         } catch (error) {
+            console.error(error);  // Log any errors to the console
             statusDiv.textContent = `Error: ${error.message}`;
         }
     });
